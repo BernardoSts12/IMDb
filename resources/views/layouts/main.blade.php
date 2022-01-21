@@ -38,8 +38,6 @@
               <a class="nav-link active" aria-current="page" href="/">Página Inicial</a>
             </li>
 
-
-
             @auth
             
             <li class="nav-item">

@@ -29,6 +29,12 @@ class CreateAssessmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assessments');
+   
+
+        Schema::table('assessments', function (Blueprint $table) {
+            $table->foreignId('filme_id')
+            ->constrained()
+            ->onDelete('cascade');
+        });
     }
 }

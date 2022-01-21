@@ -51,6 +51,11 @@ class FilmeController extends Controller
         return redirect('/admin')->with('msg', 'Evento Criado com Sucesso!');
     }
 
+
+    public function create(){
+        return view('filme.create');
+    }
+
     public function dashboard()
     {
 

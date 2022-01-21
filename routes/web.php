@@ -26,13 +26,12 @@ Route::POST('/assessment/{id}',[assessmentController::class, 'store'])->middlewa
 
 
 Route::middleware(['admin'])->group(function(){
-    Route::get('/filme/create', function () {
-        return view('filme.create');
-    });
-    
+
     Route::POST('/filme',[FilmeController::class, 'store']);
     Route::get('/admin', [FilmeController::class, 'dashboard']);
     Route::get('/filme/edit/{id}', [FilmeController::class, 'edit']);
     Route::put('/filme/update/{id}',[FilmeController::class, 'update']);
     Route::delete('/filme/{id}',[FilmeController::class, 'destroy']);
+    Route::get('/filme/create',[FilmeController::class,'create']);
+    
 });
