@@ -48,7 +48,7 @@ class FilmeController extends Controller
 
         $Filme->save();
 
-        return redirect('/dashboard')->with('msg', 'Evento Criado com Sucesso!');
+        return redirect('/admin')->with('msg', 'Evento Criado com Sucesso!');
     }
 
     public function dashboard()
@@ -85,7 +85,7 @@ class FilmeController extends Controller
 
         $filme = Filme::findOrFail($request->id)->update($data);
 
-        return redirect('/dashboard')->with('msg', 'Filme editado com sucesso');
+        return redirect('/admin')->with('msg', 'Filme editado com sucesso');
     }
 
     public function destroy($id)
@@ -93,7 +93,7 @@ class FilmeController extends Controller
 
         Filme::findOrFail($id)->delete();
 
-        return redirect('/dashboard')->with('msg', 'Filme excluido com sucesso');
+        return redirect('/admin')->with('msg', 'Filme excluido com sucesso');
     }
 
     public function show($id)
