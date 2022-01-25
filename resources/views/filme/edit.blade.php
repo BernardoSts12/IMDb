@@ -33,7 +33,7 @@
 
     <div class="form-group">
       <label for="nota">Nota do Filme:</label>
-      <input type="number" id="nota" name="nota" min="0" max="10" step="any">
+      <input type="number" id="nota" name="nota" min="0" max="10" step="any"  value="{{$filme->nota}}">
     </div>
 
     <input type="submit" class="btn btn-primary" value="Editar Filme">

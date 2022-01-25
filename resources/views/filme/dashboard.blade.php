@@ -25,7 +25,7 @@
             <tr>
                 <td scropt="row">{{ $loop->index + 1 }}</td>
                 <td>{{$filmes->name}}</td>
-                <td><img src="/img/filmes/{{$filmes->image}}" style="max-height: 50px;" alt=""></td>
+                <td><img src="storage/img/{{$filmes->image}}" style="max-height: 50px;" alt=""></td>
                 <td>
                         <a href="/filme/edit/{{ $filmes->id}}" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a> 
                             <form action="/filme/{{ $filmes->id}}" method="POST">

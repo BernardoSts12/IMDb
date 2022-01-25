@@ -9,6 +9,9 @@ use App\Models\Comment;
 use App\Models\assessment;
 use Illuminate\Support\Facades\Storage;
 
+use File;
+
+
 class FilmeController extends Controller
 {
     public function index()
@@ -24,8 +27,11 @@ class FilmeController extends Controller
             $filmes = Filme::all();
         }
 
-
         return view('welcome', ['filmes' => $filmes, 'search' => $search]);
+    }
+
+    public function create(){
+        return view('filme.create');
     }
 
     public function store(Request $request)
@@ -42,19 +48,15 @@ class FilmeController extends Controller
             $requestImage = $request->image;
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
-            $requestImage->move(public_path('img/filmes'), $imageName);
+            $requestImage->storeAs('public/img', $imageName);
             $Filme->image = $imageName;
         }
 
         $Filme->save();
 
-        return redirect('/admin')->with('msg', 'Evento Criado com Sucesso!');
+        return redirect('/admin')->with('msg', 'Filme Adicionado com Sucesso!');
     }
 
-
-    public function create(){
-        return view('filme.create');
-    }
 
     public function dashboard()
     {
@@ -76,16 +78,13 @@ class FilmeController extends Controller
     {
 
         $data = $request->all();
-
+        $filmeImg = Filme::findOrFail($id);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-
+            Storage::delete($filmeImg->image);
             $requestImage = $request->image;
-            $extension = $requestImage->extension();
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
-            $requestImage->move(public_path('img/filmes'), $imageName);
-            $data['image'] = $imageName;
+            $data['image'] =$requestImage->store('public/img');
         }
 
         $filme = Filme::findOrFail($request->id)->update($data);
@@ -95,7 +94,8 @@ class FilmeController extends Controller
 
     public function destroy($id)
     {
-
+        $filmeImg = Filme::findOrFail($id);
+        Storage::delete($filmeImg->image);
         Filme::findOrFail($id)->delete();
 
         return redirect('/admin')->with('msg', 'Filme excluido com sucesso');
@@ -163,5 +163,6 @@ class FilmeController extends Controller
         return view('filme.show',['Filme' => $Filme, 'commentTarget' => $commentTarget, 'flag'=> $flag,'user'=>$user, 'checked'=> $checked, 'disabled'=>$disabled]);
     }
 
+  
   
 }

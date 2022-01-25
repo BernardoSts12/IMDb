@@ -18,10 +18,10 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\assessmentController;
 
 Route::get('/', [FilmeController::class, 'index']);
-Route::get('/filme/{id}', [FilmeController::class, 'show']);
-Route::POST('/comment/{id}',[CommentController::class,'store'])->middleware();
+Route::get('/filme/visualizar/{id}', [FilmeController::class, 'show']);
+Route::POST('/comment/{id}',[CommentController::class,'store']);
 Route::delete('/comment/{id}',[CommentController::class, 'destroy']);
-Route::POST('/assessment/{id}',[assessmentController::class, 'store'])->middleware();
+Route::POST('/assessment/{id}',[assessmentController::class, 'store']);
 
 
 
@@ -32,6 +32,7 @@ Route::middleware(['admin'])->group(function(){
     Route::get('/filme/edit/{id}', [FilmeController::class, 'edit']);
     Route::put('/filme/update/{id}',[FilmeController::class, 'update']);
     Route::delete('/filme/{id}',[FilmeController::class, 'destroy']);
+    
     Route::get('/filme/create',[FilmeController::class,'create']);
     
 });

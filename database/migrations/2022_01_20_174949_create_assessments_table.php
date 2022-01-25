@@ -17,8 +17,8 @@ class CreateAssessmentsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->bigInteger('estrelas');
-            $table->foreignid('user_id')->constrained();
-            $table->foreignid('filme_id')->constrained();
+            $table->foreignid('user_id')->constrained()->onDelete('cascade');
+            $table->foreignid('filme_id')->constrained()->onDelete('cascade');
         });
     }
 

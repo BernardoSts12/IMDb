@@ -11,8 +11,8 @@
         
         @foreach($filmes as $filmes)
         <div class="col-md-3">
-            <a href="/filme/{{$filmes->id}}">
-            <div class="profile-card-6"><img src="/img/filmes/{{$filmes->image}}" class="img img-responsive">
+            <a href="/filme/visualizar/{{$filmes->id}}">
+            <div class="profile-card-6"><img src="storage/img/{{$filmes->image}}" class="img img-responsive">
                 <div class="profile-name">{{$filmes->name}}
                 </div>
                 <div class="profile-overview">

@@ -47,9 +47,9 @@
     </div>
 
     <div class="col-xl-4 col-md-4">
-        <img src="/img/filmes/{{ $Filme->image }}" alt="">
+        <img src="{{asset('storage/img/'.$Filme->image)}}" alt="">
     </div>
-
+    
 
     <div class="col-xl-8 col-md-12">
         <iframe src="{{ $Filme->link }}" title="YouTube video player" frameborder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -74,7 +74,7 @@
 
                     <form class="mt-3 d-flex flex-row align-items-center p-3 form-color" action="/comment/{{ $Filme->id}}" method="POST">
                         @csrf
-                        <input type="text"  class="form-control" placeholder="Enter your comment..." id="comentario" name="comentario" required>
+                        <input type="text"  class="form-control" placeholder="Comentário" id="comentario" name="comentario" required>
                     </form>
 
 

@@ -30,7 +30,7 @@
 
     <div class="form-group">
       <label for="nota">Nota do Filme:</label>
-      <input type="number" id="nota" name="nota" min="0" max="10">
+      <input type="number" id="nota" name="nota" min="0" max="10"  step="any">
     </div>
 
 
