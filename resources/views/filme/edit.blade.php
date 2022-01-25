@@ -12,7 +12,7 @@
     <div class="form-group">
       <label for="image">Imagem do Filme:</label>
       <input type="file" id="image" name="image" class="from-control-file">
-      <img src="/img/filmes/{{$filme->image}}" alt="{{ $filme->name}}" style="max-height: 50px;">
+      <img src="{{asset('storage/img/'.$filme->image)}}" alt="{{ $filme->name}}" style="max-height: 50px;">
     </div>
 
     <div class="form-group">
@@ -36,7 +36,7 @@
       <input type="number" id="nota" name="nota" min="0" max="10" step="any"  value="{{$filme->nota}}">
     </div>
 
-    <input type="submit" class="btn btn-primary" value="Editar Filme">
+    <input type="submit" class="btn btn-primary button" value="Editar Filme">
   </form>
 
 </div>

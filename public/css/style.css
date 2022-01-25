@@ -1,5 +1,6 @@
 body {
     margin: 0 80px 0 80px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .msg {
@@ -159,7 +160,8 @@ body {
 }
 
 .username {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .option {
@@ -207,4 +209,31 @@ body {
     height: 100%;
     padding: 2px;
     margin-left: 5px;
+}
+
+
+/*forms*/
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+form .button {
+    margin-top: 10px;
+}
+
+
+/*admin*/
+
+.acoes {
+    display: flex;
+}
+
+.acoes button {
+    margin-left: 5px;
+}
+
+td a {
+    text-decoration: none;
+    color: black;
 }

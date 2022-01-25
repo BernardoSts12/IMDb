@@ -78,13 +78,15 @@ class FilmeController extends Controller
     {
 
         $data = $request->all();
-        $filmeImg = Filme::findOrFail($id);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-            Storage::delete($filmeImg->image);
             $requestImage = $request->image;
-            $data['image'] =$requestImage->store('public/img');
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->storeAs('public/img', $imageName);
+            $data['image'] = $imageName;
+
         }
 
         $filme = Filme::findOrFail($request->id)->update($data);
@@ -94,8 +96,6 @@ class FilmeController extends Controller
 
     public function destroy($id)
     {
-        $filmeImg = Filme::findOrFail($id);
-        Storage::delete($filmeImg->image);
         Filme::findOrFail($id)->delete();
 
         return redirect('/admin')->with('msg', 'Filme excluido com sucesso');

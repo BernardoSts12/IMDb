@@ -34,7 +34,7 @@
     </div>
 
 
-    <input type="submit" class="btn btn-primary" value="Adicionar Filme">
+    <input type="submit" class="btn btn-primary button" value="Adicionar Filme" >
   </form>
 
 </div>

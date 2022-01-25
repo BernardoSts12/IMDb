@@ -6,7 +6,9 @@
 
 <div class="col-md-10 offset-md-1 dashboard-title-container">
     <h1>Lista de Filmes</h1>
-    <a href="/filme/create" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon> Adicionar Filme</a> 
+    <a href="/filme/create" class="btn btn-info edit-btn">
+        <ion-icon name="create-outline"></ion-icon> Adicionar Filme
+    </a>
 </div>
 
 <div class="col-md-10 offset-md-1 dashboard-events-container">
@@ -24,16 +26,22 @@
             @foreach($filmes as $filmes)
             <tr>
                 <td scropt="row">{{ $loop->index + 1 }}</td>
-                <td>{{$filmes->name}}</td>
+                <td><a href="/filme/visualizar/{{$filmes->id}}">{{$filmes->name}} </a></td>
                 <td><img src="storage/img/{{$filmes->image}}" style="max-height: 50px;" alt=""></td>
                 <td>
-                        <a href="/filme/edit/{{ $filmes->id}}" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a> 
-                            <form action="/filme/{{ $filmes->id}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger delete-btn"><ion-icon name="trash-outline"></ion-icon> Deletar</button>
-                            </form>
-                        </td>
+                    <div class="acoes">
+                        <a href="/filme/edit/{{ $filmes->id}}" class="btn btn-info edit-btn">
+                            <ion-icon name="create-outline"></ion-icon> Editar
+                        </a>
+                        <form action="/filme/{{ $filmes->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger delete-btn">
+                                <ion-icon name="trash-outline"></ion-icon> Deletar
+                            </button>
+                        </form>
+                    </div>
+                </td>
             </tr>
             @endforeach
         </tbody>

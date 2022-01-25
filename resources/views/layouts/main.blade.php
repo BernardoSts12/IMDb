@@ -64,7 +64,7 @@
           </ul>
           <form class="d-flex" action="/" method="GET">
             <input class="form-control me-2" type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
-            <button class="btn" type="submit">Search</button>
+        
           </form>
         </div>
       </div>
